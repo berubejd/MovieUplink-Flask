@@ -4,11 +4,11 @@ This Flask app is an update to my [MovieUplink](https://github.com/berubejd/Movi
 
 I kicked off this Flask project using the [Flask-Starter](https://github.com/berubejd/Flask-Starter) project I built previously.
 
-## Screenshot
+## Screenshots
 
-![Movie Uplink Flask Screenshot](images/movieuplink.png?raw-true)
+![Movie Uplink Flask Screenshot](images/movieuplink-flask.png?raw-true)
 
-![Movie Uplink Flask Movie Detail Screenshot](images/movieuplink-detail.png?raw-true)
+![Movie Uplink Flask Movie Detail Screenshot](images/movieuplink-flask-detail.png?raw-true)
 
 ## Configuration
 This application requires an API key which should be stored in the environment with a small number of other values.  The necessary key can be generated on the [The Movie Database API portal](https://developers.themoviedb.org/3/getting-started/introduction).
