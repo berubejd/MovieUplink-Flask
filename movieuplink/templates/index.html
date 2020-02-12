@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome to MovieUplink!</h1>
+    <p class="lead">This is a small Flask factory app that exercises the TMDb API and provides access to:</p>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a class="nav-link" href="{{ url_for('routes.top_rated') }}">Top Rated Movies</a></li>
+        <li class="list-inline-item">|</li>
+        <li class="list-inline-item"><a class="nav-link" href="{{ url_for('routes.now_playing') }}">Now Playing</a></li>
+        <li class="list-inline-item">|</li>
+        <li class="list-inline-item"><a class="nav-link" href="{{ url_for('routes.trending') }}">Trending Movies</a></li>
+    </ul>
+    <p class="lead">Enjoy!</p>
+{% endblock %}

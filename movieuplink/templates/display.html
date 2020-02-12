@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% set active_page = page_type %}
+
+{% block title %}{{page_type}}{% endblock %}
+
+{% block content -%}
+    <div id="carouselMovies" class="carousel slide" data-ride="carousel" data-interval="10000">
+        <ol class="carousel-indicators">
+            {% for count in range(movies|length) -%}
+            <li data-target="#carouselMovies" data-slide-to="{{ count }}" {% if loop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for movie in movies -%}
+            <div class="carousel-item{% if loop.first %} active{% endif %}">
+                <img class="d-block w-100" src="{{ movie_url }}{{ movie['backdrop_path'] }}" alt="{{ loop.index }}. {{ movie['title'] }} ({{ movie['release_date'].split('-')[0] }})">
+                <div class="carousel-caption d-block">
+                    <h5 class="text-shadow">{{ loop.index }}. {{ movie['title'] }} ({{ movie['release_date'].split('-')[0] }})</h5>
+                    <p class="d-none d-md-block"><a class="text-secodary text-shadow" data-toggle="collapse" href="#movieInformation{{ loop.index }}" role="button" aria-expanded="false" aria-controls="movieInformation{{ loop.index }}">More information...</a></p>
+                    <div class="collapse" id="movieInformation{{ loop.index }}">
+                        <div class="card card-body bg-light text-dark shadow-none text-left">
+                            <p>{{ movie["overview"] }}<p>
+                            <ul class="list-unstyled">
+                                <li>Release Date: {{ movie['release_date'] }}</li>
+                                <li>User Rating: {{ movie['vote_average'] }}</li>
+                                <li>Genres: {% for genre in movie["genre_ids"] %}{{ genres[genre] }}{{ '' if loop.last else ', ' }}{% endfor %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor -%}
+        </div>
+        <a class="carousel-control-prev" href="#carouselMovies" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselMovies" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+{% endblock -%}
